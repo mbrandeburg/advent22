@@ -62,7 +62,7 @@ with open('input.txt') as f:
                                 # insert within working tree
                                 for i, item in enumerate(workingTree):
                                     if item == currentDirectory:
-                                        workingTree.insert(i+1,'<-parent')
+                                        # workingTree.insert(i+1,'<-parent') # We dont need to update parents anymore since only collecting parents...
                                         currentParent = currentDirectory
                                 print(f'updated working tree: {workingTree}')
                             else:
