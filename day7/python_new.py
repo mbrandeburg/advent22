@@ -27,16 +27,28 @@ with open('input.txt') as f:
                 if splitValues[0] == '$': # we pass ls but keeping for other items
                     if splitValues[1] == 'cd':
                         if splitValues[2] == '..':
-                            # move up parent -- IF ITS FIRST PARENT, CLEAR PARENT TREE AND RESTART
+                            # TODO: move up parent -- IF ITS FIRST PARENT, CLEAR PARENT TREE AND RESTART
                             # OTHERWISE, DO NOTHING AS WE KEEP ADDING VALUES TO DATAFRAME
                             pass
                         else:
                             # do something - we add a new parent
-                            pass
+                            currentDirectory = splitValues[2]
+                            if currentDirectory in workingTree:
+                                # insert within working tree
+                                for i, item in enumerate(workingTree):
+                                    if item == currentDirectory:
+                                        workingTree.insert(i+1,'<-parent')
+                                        currentParent = currentDirectory
+                                print(f'updated working tree: {workingTree}')
+                            else:
+                                currentParent = currentDirectory
+                                workingTree.append(currentDirectory)
+                                workingTree.append('<-parent') # for splititng later?
+                                print(f'updated working tree: {workingTree}')
                 elif splitValues[0] == 'dir':
-                    # do something - append to tree but we really dont need to in all likelyhood
+                    # TODO: do something - append to tree but we really dont need to in all likelyhood
                     # NOW WE ONLY CARE ABOUT TOP LEVEL PARENT CHANGES
                     pass
                 else:
-                    # add values to parent
+                    # TODO: add values to parent
                     pass
