@@ -36,7 +36,7 @@ with open('input.txt') as f:
 
 ## NOW ANALYZE THE DF
 # Step 2: count len() first and last row, and doulbe number of rows total to get borders that are inherently visible
-initialCount = len(df.col1) * 2 + len(df.loc[0]) * 2
+initialCount = len(df.col1) * 2 + len(df.loc[0]) * 2 - 3 # b/c can't count the 4 corners each time
 
 # Step 3: figure out how to traverse dataframe, figuring if visible from outside
 # Step 3b: keep in mind that inner rows have to keep checking all the way till outer row is hit...
@@ -81,7 +81,7 @@ for i in range(1,len(df)-1): # we skip first and last row
                 break
 
         # check east
-        eastList = list(range(currentLocation[0]+1,99))
+        eastList = list(range(currentLocation[1]+1,99))
         # print(eastList)
         for coord in eastList:
             # print(f'New coord: {coord}')
