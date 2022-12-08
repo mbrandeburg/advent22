@@ -95,3 +95,10 @@ with open('input.txt') as f:
 print('\n',df)
 # print(df.columns)
 # print(df['TopParent'].values)
+
+# TODO: It seems to work, but now we only need to 
+# append the values to topmostparent if active 
+# directory > 100,000..... 
+# SO, likely making apend values go to a list,
+# and then we only apend to top parent when we hit cd something
+# at which point we do the regular forumla but sub in int(sum(list)) instead of splitValues[0]
